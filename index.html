@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            /* Inner shadow */
+            --shadow-offset: 0;
+            --shadow-blur: 20px;
+            --shadow-spread: -5px;
+            --shadow-color: rgba(255, 255, 255, 0.7);
+
+            /* Painted glass */
+            --tint-color: 255, 255, 255;
+            --tint-opacity: 0.4;
+
+            /* Background frost */
+            --frost-blur: 2px;
+
+            /* SVG noise/distortion */
+            --noise-frequency: 0.008;
+            --distortion-strength: 77;
+
+            /* Outer shadow blur */
+            --outer-shadow-blur: 24px;
+
+            /* Initial UI Values - Edit these to change defaults */
+            --initial-text-content: "Hello World";
+            --initial-font-size: 32px;
+            --initial-font-color: #333333;
+            --initial-background-url: "image.jpg";
+            --initial-tint-color: #ffffff;
+            --initial-shadow-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('image.png') center/cover no-repeat;
+            font-family: 'Arial', sans-serif;
+            font-weight: 300;
+            position: relative;
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            width: fit-content;
+            min-width: 300px;
+            height: fit-content;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 28px;
+            cursor: move;
+            isolation: isolate;
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
+            box-shadow: 0px 6px var(--outer-shadow-blur) rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: 28px;
+            box-shadow:
+                inset var(--shadow-offset) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+            background-color: rgba(var(--tint-color), var(--tint-opacity));
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: 28px;
+            backdrop-filter: blur(var(--frost-blur));
+            -webkit-backdrop-filter: blur(var(--frost-blur));
+            filter: url(#glass-distortion);
+            -webkit-filter: url("#glass-distortion");
+            isolation: isolate;
+        }
+
+        .container:active {
+            transform: translate(-50%, -50%) scale(0.98);
+        }
+
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+            font-size: var(--initial-font-size);
+            font-weight: bold;
+            color: var(--initial-font-color);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-family: 'Arial', sans-serif;
+            width: fit-content;
+            pointer-events: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .controls-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            overflow-x: auto;
+            z-index: 1000;
+            font-size: 12px;
+            min-height: 60px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            min-width: 120px;
+        }
+
+        .control-group label {
+            font-size: 10px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .control-group input[type="range"] {
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .control-group input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .control-group input[type="color"] {
+            width: 40px;
+            height: 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .control-group input[type="text"],
+        .control-group input[type="url"] {
+            width: 120px;
+            height: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 5px 8px;
+            font-size: 11px;
+        }
+
+        .control-group input[type="text"]::placeholder,
+        .control-group input[type="url"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .wide-input {
+            min-width: 180px;
+        }
+
+        .export-btn {
+            margin-left: auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .export-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .value-display {
+            font-size: 9px;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <svg style="position: absolute; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="glass-distortion">
+                <feTurbulence baseFrequency="0.008" numOctaves="2" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="77"/>
+            </filter>
+        </defs>
+    </svg>
+    
+    <div class="container" id="draggableContainer">
+        <h1>Hello World</h1>
+    </div>
+
+    <div class="controls-bar">
+        <div class="control-group">
+            <label for="shadowBlur">Shadow Blur</label>
+            <input type="range" id="shadowBlur" min="0" max="50" value="20">
+            <div class="value-display" id="shadowBlurValue">20px</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="shadowSpread">Shadow Spread</label>
+            <input type="range" id="shadowSpread" min="-20" max="10" value="-5">
+            <div class="value-display" id="shadowSpreadValue">-5px</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="tintOpacity">Tint Opacity</label>
+            <input type="range" id="tintOpacity" min="0" max="1" step="0.01" value="0.4">
+            <div class="value-display" id="tintOpacityValue">0.4</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="frostBlur">Frost Blur</label>
+            <input type="range" id="frostBlur" min="0" max="10" step="0.1" value="2">
+            <div class="value-display" id="frostBlurValue">2px</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="noiseFreq">Noise Frequency</label>
+            <input type="range" id="noiseFreq" min="0.001" max="0.02" step="0.001" value="0.008">
+            <div class="value-display" id="noiseFreqValue">0.008</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="distortion">Distortion</label>
+            <input type="range" id="distortion" min="0" max="150" value="77">
+            <div class="value-display" id="distortionValue">77</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="outerShadow">Outer Shadow</label>
+            <input type="range" id="outerShadow" min="0" max="50" value="24">
+            <div class="value-display" id="outerShadowValue">24px</div>
+        </div>
+        
+        <div class="control-group">
+            <label for="tintColor">Tint Color</label>
+            <input type="color" id="tintColor">
+        </div>
+        
+        <div class="control-group">
+            <label for="shadowColor">Shadow Color</label>
+            <input type="color" id="shadowColor">
+        </div>
+        
+        <div class="control-group wide-input">
+            <label for="backgroundUrl">Background URL</label>
+            <input type="url" id="backgroundUrl" placeholder="Enter image URL...">
+        </div>
+        
+        <div class="control-group">
+            <label for="textContent">Text Content</label>
+            <input type="text" id="textContent" placeholder="Enter text...">
+        </div>
+        
+        <div class="control-group">
+            <label for="fontSize">Font Size</label>
+            <input type="range" id="fontSize" min="12" max="60">
+            <div class="value-display" id="fontSizeValue"></div>
+        </div>
+        
+        <div class="control-group">
+            <label for="fontColor">Font Color</label>
+            <input type="color" id="fontColor">
+        </div>
+
+        <button class="export-btn" onclick="exportCSS()">Export CSS</button>
+    </div>
+
+    <script>
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        const container = document.getElementById('draggableContainer');
+
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            if (e.target === container || container.contains(e.target)) {
+                isDragging = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                // Get container dimensions
+                const containerRect = container.getBoundingClientRect();
+                const containerWidth = containerRect.width;
+                const containerHeight = containerRect.height;
+
+                // Get window dimensions
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+
+                // Calculate boundaries (accounting for the -50% transform)
+                const minX = -windowWidth / 2 + containerWidth / 2;
+                const maxX = windowWidth / 2 - containerWidth / 2;
+                const minY = -windowHeight / 2 + containerHeight / 2;
+                const maxY = windowHeight / 2 - containerHeight / 2;
+
+                // Constrain to window bounds
+                const constrainedX = Math.max(minX, Math.min(maxX, currentX));
+                const constrainedY = Math.max(minY, Math.min(maxY, currentY));
+
+                container.style.transform = `translate(calc(-50% + ${constrainedX}px), calc(-50% + ${constrainedY}px))`;
+            }
+        }
+
+        // Mouse events
+        container.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        // Touch events for mobile
+        container.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
+        // Initialize all inputs from CSS variables
+        function initializeInputsFromCSS() {
+            const rootStyles = getComputedStyle(document.documentElement);
+            
+            // Get initial values from CSS variables
+            const initialTextContent = rootStyles.getPropertyValue('--initial-text-content').replace(/"/g, '').trim();
+            const initialFontSize = parseInt(rootStyles.getPropertyValue('--initial-font-size'));
+            const initialFontColor = rootStyles.getPropertyValue('--initial-font-color').trim();
+            const initialBackgroundUrl = rootStyles.getPropertyValue('--initial-background-url').replace(/"/g, '').trim();
+            const initialTintColor = rootStyles.getPropertyValue('--initial-tint-color').trim();
+            const initialShadowColor = rootStyles.getPropertyValue('--initial-shadow-color').trim();
+            
+            // Set input values
+            document.getElementById('textContent').value = initialTextContent;
+            document.getElementById('fontSize').value = initialFontSize;
+            document.getElementById('fontSizeValue').textContent = initialFontSize + 'px';
+            document.getElementById('fontColor').value = initialFontColor;
+            document.getElementById('backgroundUrl').value = initialBackgroundUrl;
+            document.getElementById('tintColor').value = initialTintColor;
+            document.getElementById('shadowColor').value = initialShadowColor;
+            
+            // Set initial text content and background
+            document.querySelector('h1').textContent = initialTextContent;
+            document.body.style.background = `url('${initialBackgroundUrl}') center/cover no-repeat`;
+        }
+
+        // Control functionality
+        function updateCSSVariable(property, value, unit = '') {
+            document.documentElement.style.setProperty(property, value + unit);
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? 
+                `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+                '255, 255, 255';
+        }
+
+        // Slider event listeners
+        document.getElementById('shadowBlur').addEventListener('input', function() {
+            updateCSSVariable('--shadow-blur', this.value, 'px');
+            document.getElementById('shadowBlurValue').textContent = this.value + 'px';
+        });
+
+        document.getElementById('shadowSpread').addEventListener('input', function() {
+            updateCSSVariable('--shadow-spread', this.value, 'px');
+            document.getElementById('shadowSpreadValue').textContent = this.value + 'px';
+        });
+
+        document.getElementById('tintOpacity').addEventListener('input', function() {
+            updateCSSVariable('--tint-opacity', this.value);
+            document.getElementById('tintOpacityValue').textContent = this.value;
+        });
+
+        document.getElementById('frostBlur').addEventListener('input', function() {
+            updateCSSVariable('--frost-blur', this.value, 'px');
+            document.getElementById('frostBlurValue').textContent = this.value + 'px';
+        });
+
+        document.getElementById('noiseFreq').addEventListener('input', function() {
+            updateCSSVariable('--noise-frequency', this.value);
+            document.getElementById('noiseFreqValue').textContent = this.value;
+            // Update SVG filter
+            document.querySelector('#glass-distortion feTurbulence').setAttribute('baseFrequency', this.value);
+        });
+
+        document.getElementById('distortion').addEventListener('input', function() {
+            updateCSSVariable('--distortion-strength', this.value);
+            document.getElementById('distortionValue').textContent = this.value;
+            // Update SVG filter
+            document.querySelector('#glass-distortion feDisplacementMap').setAttribute('scale', this.value);
+        });
+
+        document.getElementById('outerShadow').addEventListener('input', function() {
+            updateCSSVariable('--outer-shadow-blur', this.value, 'px');
+            document.getElementById('outerShadowValue').textContent = this.value + 'px';
+        });
+
+        document.getElementById('tintColor').addEventListener('input', function() {
+            const rgb = hexToRgb(this.value);
+            updateCSSVariable('--tint-color', rgb);
+        });
+
+        document.getElementById('shadowColor').addEventListener('input', function() {
+            const rgb = hexToRgb(this.value);
+            const opacity = 0.7; // Keep consistent opacity
+            updateCSSVariable('--shadow-color', `rgba(${rgb}, ${opacity})`);
+        });
+
+        // Background URL control
+        document.getElementById('backgroundUrl').addEventListener('input', function() {
+            if (this.value.trim()) {
+                document.body.style.background = `url('${this.value}') center/cover no-repeat`;
+            }
+        });
+
+        // Text content control
+        document.getElementById('textContent').addEventListener('input', function() {
+            document.querySelector('h1').textContent = this.value || 'Hello World';
+        });
+
+        // Font size control
+        document.getElementById('fontSize').addEventListener('input', function() {
+            document.querySelector('h1').style.fontSize = this.value + 'px';
+            document.getElementById('fontSizeValue').textContent = this.value + 'px';
+        });
+
+        // Font color control
+        document.getElementById('fontColor').addEventListener('input', function() {
+            document.querySelector('h1').style.color = this.value;
+        });
+
+        // Initialize all inputs from CSS variables
+        initializeInputsFromCSS();
+
+        // Export CSS function
+        function exportCSS() {
+            const rootStyles = getComputedStyle(document.documentElement);
+            const h1Styles = getComputedStyle(document.querySelector('h1'));
+            const bodyStyles = getComputedStyle(document.body);
+            
+            const cssVariables = [
+                '--shadow-offset',
+                '--shadow-blur', 
+                '--shadow-spread',
+                '--shadow-color',
+                '--tint-color',
+                '--tint-opacity',
+                '--frost-blur',
+                '--noise-frequency',
+                '--distortion-strength',
+                '--outer-shadow-blur'
+            ];
+
+            let cssOutput = '/* Glass Effect Variables */\n:root {\n';
+            cssVariables.forEach(variable => {
+                const value = rootStyles.getPropertyValue(variable).trim();
+                if (value) {
+                    cssOutput += `    ${variable}: ${value};\n`;
+                }
+            });
+            cssOutput += '}\n\n/* To change initial values, add these variables to :root: */\n';
+            cssOutput += '/* --initial-text-content, --initial-font-size, --initial-font-color, --initial-background-url, --initial-tint-color, --initial-shadow-color */\n\n';
+
+            // Add body background if custom
+            const backgroundUrl = document.getElementById('backgroundUrl').value;
+            if (backgroundUrl) {
+                cssOutput += `body {\n    background: url('${backgroundUrl}') center/cover no-repeat;\n}\n\n`;
+            }
+
+            // Add h1 custom styles
+            const fontSize = document.getElementById('fontSize').value;
+            const fontColor = document.getElementById('fontColor').value;
+            const textContent = document.getElementById('textContent').value;
+            
+            cssOutput += 'h1 {\n';
+            if (fontSize !== '32') {
+                cssOutput += `    font-size: ${fontSize}px;\n`;
+            }
+            if (fontColor !== '#ffffff') {
+                cssOutput += `    color: ${fontColor};\n`;
+            }
+            cssOutput += '}\n\n';
+
+            // Add HTML content note
+            if (textContent !== 'Hello World') {
+                cssOutput += `/* HTML Content: "${textContent}" */\n`;
+            }
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(cssOutput).then(() => {
+                // Visual feedback
+                const btn = document.querySelector('.export-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 2000);
+            }).catch(() => {
+                // Fallback: create downloadable file
+                const blob = new Blob([cssOutput], { type: 'text/css' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'liquid-glass-effect.css';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+</html>
