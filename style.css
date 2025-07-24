@@ -218,33 +218,60 @@ h1 {
         flex-direction: column;
     }
     
-    /* Reorder elements for mobile */
+    /* Keep one ad above main container - use left ad */
     .ad-space-left {
         width: 100%;
         min-height: 100px;
-        order: -1; /* Move above main container */
+        order: -1; /* Above main container */
     }
     
     .content-area {
         order: 0;
     }
     
-    .ad-space-right {
-        width: 100%;
-        min-height: 100px;
-        order: 2; /* Move below controls */
+    /* Hide the right ad completely in mobile within desktop-layout */
+    .desktop-layout .ad-space-right {
+        display: none !important;
     }
     
-    /* Hide the original below ad on mobile since we're redistributing */
+    /* The ad-space-below stays between main and controls (it's inside content-area) */
     .ad-space-below {
-        display: none;
+        display: block;
+        width: 100%;
     }
     
-
+    /* Move top banner, right, and bottom ads below controls */
+    body {
+        display: flex;
+        flex-direction: column;
+    }
     
-    /* Adjust controls bar positioning for mobile */
-    .controls-bar {
+    .desktop-layout {
         order: 1;
+    }
+    
+    .controls-bar {
+        order: 2;
+    }
+    
+    /* 3 ads below controls */
+    .ad-space-top {
+        order: 3;
+        margin: 20px auto 0 auto; /* Adjust top margin for mobile positioning */
+    }
+    
+    .ad-space-right {
+        display: block; /* Show again but positioned after controls */
+        width: calc(100% - 40px);
+        max-width: 1600px;
+        margin: 20px auto 0 auto;
+        min-height: 100px;
+        order: 4;
+    }
+    
+    .ad-space-bottom {
+        order: 5;
+        margin-top: 0;
     }
 }
 
