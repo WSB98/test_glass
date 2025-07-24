@@ -1,0 +1,119 @@
+# Robots.txt for Liquid Glass Generator
+# Optimized for search engine crawlers
+
+# Global rules for all bots
+User-agent: *
+Allow: /
+Disallow: /ads.txt
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /node_modules/
+Disallow: /tmp/
+Disallow: /*.log$
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Allow: /favicon/
+Allow: /image.jpg
+Allow: /style.css
+Allow: /script.js
+Crawl-delay: 1
+
+# Rules for Bing
+User-agent: Bingbot
+Allow: /
+Allow: /favicon/
+Allow: /image.jpg
+Allow: /style.css
+Allow: /script.js
+Crawl-delay: 1
+
+# Rules for Yandex
+User-agent: YandexBot
+Allow: /
+Allow: /favicon/
+Allow: /image.jpg
+Allow: /style.css
+Allow: /script.js
+Crawl-delay: 2
+
+# Rules for DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Allow: /favicon/
+Allow: /image.jpg
+Allow: /style.css
+Allow: /script.js
+Crawl-delay: 1
+
+# Rules for Baidu
+User-agent: Baiduspider
+Allow: /
+Allow: /favicon/
+Allow: /image.jpg
+Allow: /style.css
+Allow: /script.js
+Crawl-delay: 2
+
+# Allow CSS and JS for proper rendering
+User-agent: *
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.webp$
+Allow: /*.webmanifest$
+
+# Block malicious bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SplitSignalBot
+Disallow: /
+
+# Allow social media crawlers
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Allow Google PageSpeed Insights
+User-agent: Google-PageSpeed-Insights
+Allow: /
+
+# Allow Google Lighthouse
+User-agent: Chrome-Lighthouse
+Allow: /
+
+# Sitemap location
+Sitemap: https://glasscss.com/sitemap.xml
+
+# Host directive
+Host: glasscss.com 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Main Page -->
+    <url>
+        <loc>https://glasscss.com/</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://glasscss.com/image.jpg</image:loc>
+            <image:title>Liquid Glass Generator - Glass Morphism Effect Tool</image:title>
+            <image:caption>Professional CSS glass morphism generator with real-time preview and customizable effects</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Favicon Directory -->
+    <url>
+        <loc>https://glasscss.com/favicon/</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- App Manifest -->
+    <url>
+        <loc>https://glasscss.com/favicon/site.webmanifest</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+</urlset> 
