@@ -36,7 +36,7 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Liquid Glass Generator - CSS Glass Morphism Tool">
-    <meta name="twitter:description" content="Create stunning glass morphism effects with our professional CSS generator. Customize glass blur, shadows, transparency, and export production-ready code.">
+    <meta name="twitter:description" content="Create stunning glass morphism effects with our professional CSS generator. Customize glass blur, shadows, transparency, and export production-ready code instantly.">
     <meta name="twitter:image" content="https://glasscss.com/image.png">
     <meta name="twitter:image:alt" content="Liquid Glass Generator Tool Interface">
     
@@ -112,6 +112,7 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6347972133297091"
     crossorigin="anonymous"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
@@ -131,18 +132,25 @@
         </defs>
     </svg>
     
-    <!-- Top banner ad space -->
-    <div class="ad-space ad-space-top">
-    <!-- glass-banner-top -->
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-6347972133297091"
-        data-ad-slot="1951581110"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    </div>
-    
-    <!-- Desktop layout with side ads -->
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Liquid Glass Generator</h1>
+            <p class="header-subtitle">Create stunning glass morphism effects with professional CSS code generation</p>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="content-wrapper">
+            <h2>What is Glass Morphism?</h2>
+            <p>Glass morphism (also known as glassmorphism) is a modern UI design trend that creates beautiful, translucent glass-like effects. This technique uses backdrop filters, subtle shadows, and transparency to create depth and visual hierarchy in web interfaces. It's become increasingly popular in modern web design for its elegant, clean aesthetic.</p>
+            
+            <p>Our Liquid Glass Generator takes this concept further by adding dynamic distortion effects that create a more organic, liquid-like appearance. The result is a unique visual effect that stands out from traditional flat or even standard glass morphism designs.</p>
+        </div>
+    </section>
+
+    <!-- Desktop layout with side ads around main tool -->
     <div class="desktop-layout">
         <!-- Left ad space -->
         <div class="ad-space ad-space-left">
@@ -154,23 +162,91 @@
                 data-full-width-responsive="true"></ins>
         </div>
         
-        <!-- Main content area -->
+        <!-- Main content area with tool and controls -->
         <div class="content-area">
             <!-- Main container for background image and draggable element -->
             <div class="main-container">
                 <div class="container" id="draggableContainer">
-                    <h1>Hello World</h1>
+                    <h2 class="glass-text">Hello World</h2>
                 </div>
             </div>
 
-            <!-- Space for ads -->
-            <div class="ad-space ad-space-below">
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-6347972133297091"
-                    data-ad-slot="9100493142"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
+            <!-- Controls Section -->
+            <div class="controls-bar">
+                <div class="control-group">
+                    <label for="shadowBlur">Shadow Blur</label>
+                    <input type="range" id="shadowBlur" min="0" max="50" value="20">
+                    <div class="value-display" id="shadowBlurValue">20px</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="shadowSpread">Shadow Spread</label>
+                    <input type="range" id="shadowSpread" min="-20" max="10" value="-5">
+                    <div class="value-display" id="shadowSpreadValue">-5px</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="tintOpacity">Tint Opacity</label>
+                    <input type="range" id="tintOpacity" min="0" max="1" step="0.01" value="0.4">
+                    <div class="value-display" id="tintOpacityValue">0.4</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="frostBlur">Frost Blur</label>
+                    <input type="range" id="frostBlur" min="0" max="10" step="0.1" value="2">
+                    <div class="value-display" id="frostBlurValue">2px</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="noiseFreq">Noise Frequency</label>
+                    <input type="range" id="noiseFreq" min="0.001" max="0.02" step="0.001" value="0.008">
+                    <div class="value-display" id="noiseFreqValue">0.008</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="distortion">Distortion</label>
+                    <input type="range" id="distortion" min="0" max="150" value="77">
+                    <div class="value-display" id="distortionValue">77</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="outerShadow">Outer Shadow</label>
+                    <input type="range" id="outerShadow" min="0" max="50" value="24">
+                    <div class="value-display" id="outerShadowValue">24px</div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="tintColor">Tint Color</label>
+                    <input type="color" id="tintColor">
+                </div>
+                
+                <div class="control-group">
+                    <label for="shadowColor">Shadow Color</label>
+                    <input type="color" id="shadowColor">
+                </div>
+                
+                <div class="control-group wide-input">
+                    <label for="backgroundUrl">Background URL</label>
+                    <input type="url" id="backgroundUrl" placeholder="Enter image URL...">
+                </div>
+                
+                <div class="control-group">
+                    <label for="textContent">Text Content</label>
+                    <input type="text" id="textContent" placeholder="Enter text...">
+                </div>
+                
+                <div class="control-group">
+                    <label for="fontSize">Font Size</label>
+                    <input type="range" id="fontSize" min="12" max="60">
+                    <div class="value-display" id="fontSizeValue"></div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="fontColor">Font Color</label>
+                    <input type="color" id="fontColor">
+                </div>
+
+                <button class="export-btn" onclick="exportCSS()">Download Glass Effect Package</button>
             </div>
         </div>
         
@@ -185,85 +261,136 @@
         </div>
     </div>
 
-    <div class="controls-bar">
-        <div class="control-group">
-            <label for="shadowBlur">Shadow Blur</label>
-            <input type="range" id="shadowBlur" min="0" max="50" value="20">
-            <div class="value-display" id="shadowBlurValue">20px</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="shadowSpread">Shadow Spread</label>
-            <input type="range" id="shadowSpread" min="-20" max="10" value="-5">
-            <div class="value-display" id="shadowSpreadValue">-5px</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="tintOpacity">Tint Opacity</label>
-            <input type="range" id="tintOpacity" min="0" max="1" step="0.01" value="0.4">
-            <div class="value-display" id="tintOpacityValue">0.4</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="frostBlur">Frost Blur</label>
-            <input type="range" id="frostBlur" min="0" max="10" step="0.1" value="2">
-            <div class="value-display" id="frostBlurValue">2px</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="noiseFreq">Noise Frequency</label>
-            <input type="range" id="noiseFreq" min="0.001" max="0.02" step="0.001" value="0.008">
-            <div class="value-display" id="noiseFreqValue">0.008</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="distortion">Distortion</label>
-            <input type="range" id="distortion" min="0" max="150" value="77">
-            <div class="value-display" id="distortionValue">77</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="outerShadow">Outer Shadow</label>
-            <input type="range" id="outerShadow" min="0" max="50" value="24">
-            <div class="value-display" id="outerShadowValue">24px</div>
-        </div>
-        
-        <div class="control-group">
-            <label for="tintColor">Tint Color</label>
-            <input type="color" id="tintColor">
-        </div>
-        
-        <div class="control-group">
-            <label for="shadowColor">Shadow Color</label>
-            <input type="color" id="shadowColor">
-        </div>
-        
-        <div class="control-group wide-input">
-            <label for="backgroundUrl">Background URL</label>
-            <input type="url" id="backgroundUrl" placeholder="Enter image URL...">
-        </div>
-        
-        <div class="control-group">
-            <label for="textContent">Text Content</label>
-            <input type="text" id="textContent" placeholder="Enter text...">
-        </div>
-        
-        <div class="control-group">
-            <label for="fontSize">Font Size</label>
-            <input type="range" id="fontSize" min="12" max="60">
-            <div class="value-display" id="fontSizeValue"></div>
-        </div>
-        
-        <div class="control-group">
-            <label for="fontColor">Font Color</label>
-            <input type="color" id="fontColor">
-        </div>
-
-        <button class="export-btn" onclick="exportCSS()">Download Glass Effect Package</button>
+    <!-- First Banner Ad - After Main Tool -->
+    <div class="ad-space ad-banner-1">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6347972133297091"
+            data-ad-slot="1951581110"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
     </div>
 
-    <!-- Space for ads below controls -->
-    <div class="ad-space ad-space-bottom">
+    <!-- Tutorial Section -->
+    <section class="tutorial-section">
+        <div class="content-wrapper">
+            <h2>How to Use the Liquid Glass Generator</h2>
+            
+            <div class="tutorial-steps">
+                <div class="step">
+                    <h3>Step 1: Customize Your Glass Effect</h3>
+                    <p>Use the control panel above to adjust various parameters of your glass effect:</p>
+                    <ul>
+                        <li><strong>Shadow Blur & Spread:</strong> Controls the inner shadow that gives depth to the glass</li>
+                        <li><strong>Tint Opacity:</strong> Adjusts how transparent or opaque the glass appears</li>
+                        <li><strong>Frost Blur:</strong> Controls the background blur intensity (backdrop-filter)</li>
+                        <li><strong>Noise Frequency:</strong> Adjusts the texture pattern frequency</li>
+                        <li><strong>Distortion:</strong> Controls the liquid-like warping effect</li>
+                        <li><strong>Colors:</strong> Customize the tint and shadow colors to match your design</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3>Step 2: Preview in Real-Time</h3>
+                    <p>Watch your changes take effect immediately in the preview above. The glass element is draggable, so you can position it anywhere within the preview area to see how it looks against different parts of the background image.</p>
+                </div>
+
+                <div class="step">
+                    <h3>Step 3: Export Your Code</h3>
+                    <p>Click the "Download Glass Effect Package" button to get a complete ZIP file containing:</p>
+                    <ul>
+                        <li>Complete CSS file with all your custom settings</li>
+                        <li>HTML template with the required SVG displacement map</li>
+                        <li>Safari compatibility script for optimal cross-browser support</li>
+                        <li>Detailed README with implementation instructions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second Banner Ad - After Tutorial -->
+    <div class="ad-space ad-banner-2">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6347972133297091"
+            data-ad-slot="9100493142"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Technical Details Section -->
+    <section class="technical-section">
+        <div class="content-wrapper">
+            <h2>Technical Implementation Details</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>CSS backdrop-filter</h3>
+                    <p>The core glass effect uses the modern CSS <code>backdrop-filter</code> property to blur the background behind the element. This creates the frosted glass appearance that's central to glass morphism design.</p>
+                </div>
+
+                <div class="tech-item">
+                    <h3>SVG Filters</h3>
+                    <p>We use SVG <code>feTurbulence</code> and <code>feDisplacementMap</code> filters to create the unique liquid distortion effect. This adds organic movement and makes the effect stand out from standard glass morphism.</p>
+                </div>
+
+                <div class="tech-item">
+                    <h3>CSS Custom Properties</h3>
+                    <p>All effect parameters are implemented using CSS custom properties (variables), making it easy to customize and maintain consistent styling across your project.</p>
+                </div>
+
+                <div class="tech-item">
+                    <h3>Cross-Browser Compatibility</h3>
+                    <p>The generated code includes vendor prefixes and Safari-specific compatibility fixes to ensure your glass effects work across all modern browsers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Gallery Section -->
+    <section class="examples-section">
+        <div class="content-wrapper">
+            <h2>Glass Morphism Examples & Use Cases</h2>
+            
+            <div class="examples-grid">
+                <div class="example-item">
+                    <h3>Navigation Bars</h3>
+                    <p>Create elegant floating navigation bars that blend beautifully with background content while maintaining readability and accessibility.</p>
+                    <div class="code-snippet">
+                        <code>.navbar { backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); }</code>
+                    </div>
+                </div>
+
+                <div class="example-item">
+                    <h3>Modal Dialogs</h3>
+                    <p>Glass morphism works excellently for modal windows and dialogs, creating focus without completely obscuring the background content.</p>
+                    <div class="code-snippet">
+                        <code>.modal { backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); }</code>
+                    </div>
+                </div>
+
+                <div class="example-item">
+                    <h3>Card Components</h3>
+                    <p>Transform boring card layouts into elegant glass cards that add depth and visual interest to your content sections.</p>
+                    <div class="code-snippet">
+                        <code>.card { background: rgba(255,255,255,0.15); box-shadow: 0 8px 32px rgba(31,38,135,0.37); }</code>
+                    </div>
+                </div>
+
+                <div class="example-item">
+                    <h3>Sidebar Panels</h3>
+                    <p>Create modern sidebar designs that feel integrated with your layout while maintaining clear content separation.</p>
+                    <div class="code-snippet">
+                        <code>.sidebar { backdrop-filter: blur(16px); background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.05)); }</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third Banner Ad - After Examples -->
+    <div class="ad-space ad-banner-3">
         <ins class="adsbygoogle"
             style="display:block"
             data-ad-client="ca-pub-6347972133297091"
@@ -272,15 +399,98 @@
             data-full-width-responsive="true"></ins>
     </div>
 
+    <!-- Best Practices Section -->
+    <section class="best-practices-section">
+        <div class="content-wrapper">
+            <h2>Glass Morphism Design Best Practices</h2>
+            
+            <div class="practices-content">
+                <div class="practice-item">
+                    <h3>1. Maintain Readability</h3>
+                    <p>Always ensure text and interactive elements remain clearly readable over glass effects. Use sufficient contrast and consider text shadows when necessary.</p>
+                </div>
+
+                <div class="practice-item">
+                    <h3>2. Performance Considerations</h3>
+                    <p>Backdrop filters can be performance-intensive. Use them judiciously and test on lower-end devices. Consider simpler alternatives for complex layouts.</p>
+                </div>
+
+                <div class="practice-item">
+                    <h3>3. Accessibility First</h3>
+                    <p>Ensure your glass effects don't interfere with screen readers or keyboard navigation. Provide sufficient color contrast ratios for all text.</p>
+                </div>
+
+                <div class="practice-item">
+                    <h3>4. Progressive Enhancement</h3>
+                    <p>Always provide fallback styles for browsers that don't support backdrop-filter. Your design should be functional even without the glass effect.</p>
+                </div>
+
+                <div class="practice-item">
+                    <h3>5. Brand Consistency</h3>
+                    <p>Adapt glass effects to match your brand colors and overall design language. The effect should enhance, not overshadow, your content.</p>
+                </div>
+
+                <div class="practice-item">
+                    <h3>6. Mobile Optimization</h3>
+                    <p>Test glass effects thoroughly on mobile devices. Some effects may need adjustment for smaller screens or touch interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browser Support Section -->
+    <section class="browser-support-section">
+        <div class="content-wrapper">
+            <h2>Browser Support & Compatibility</h2>
+            
+            <div class="browser-grid">
+                <div class="browser-item">
+                    <h3>Chrome</h3>
+                    <p>Full support for backdrop-filter since version 76. Excellent performance and rendering quality.</p>
+                </div>
+
+                <div class="browser-item">
+                    <h3>Firefox</h3>
+                    <p>Support since version 103. Good performance with some minor rendering differences.</p>
+                </div>
+
+                <div class="browser-item">
+                    <h3>Safari</h3>
+                    <p>Requires -webkit- prefix. Supported since version 14. May need JavaScript fixes for SVG filters.</p>
+                </div>
+
+                <div class="browser-item">
+                    <h3>Edge</h3>
+                    <p>Full support in modern Edge (Chromium-based). Excellent compatibility and performance.</p>
+                </div>
+            </div>
+
+            <div class="fallback-info">
+                <h3>Fallback Strategy</h3>
+                <p>For browsers without backdrop-filter support, the generated CSS includes graceful fallbacks using semi-transparent backgrounds and traditional box-shadows. Your design will remain functional and attractive across all browsers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="content-wrapper">
+            <p>Liquid Glass Generator. Create beautiful glass morphism effects for modern web design.</p>
+            <p>This tool is free to use and generates production-ready CSS code. No registration required.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
     
     <!-- Initialize AdSense ads -->
     <script>
+        // Initialize all AdSense ad units
+        (function() {
+            const ads = document.querySelectorAll('.adsbygoogle');
+            ads.forEach(() => {
         (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+        })();
     </script>
 </body>
 </html>

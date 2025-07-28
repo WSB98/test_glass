@@ -100,7 +100,7 @@ function initializeInputsFromCSS() {
     document.getElementById('shadowColor').value = initialShadowColor;
     
     // Set initial text content and background
-    document.querySelector('h1').textContent = initialTextContent;
+    document.querySelector('.glass-text').textContent = initialTextContent;
     mainContainer.style.background = `url('${initialBackgroundUrl}') center/cover no-repeat`;
 }
 
@@ -180,18 +180,18 @@ document.getElementById('backgroundUrl').addEventListener('input', function() {
 
 // Text content control
 document.getElementById('textContent').addEventListener('input', function() {
-    document.querySelector('h1').textContent = this.value || 'Hello World';
+    document.querySelector('.glass-text').textContent = this.value || 'Hello World';
 });
 
 // Font size control
 document.getElementById('fontSize').addEventListener('input', function() {
-    document.querySelector('h1').style.fontSize = this.value + 'px';
+    document.querySelector('.glass-text').style.fontSize = this.value + 'px';
     document.getElementById('fontSizeValue').textContent = this.value + 'px';
 });
 
 // Font color control
 document.getElementById('fontColor').addEventListener('input', function() {
-    document.querySelector('h1').style.color = this.value;
+    document.querySelector('.glass-text').style.color = this.value;
 });
 
 // Initialize all inputs from CSS variables
@@ -279,8 +279,8 @@ function exportCSS() {
     --outer-shadow-blur: ${rootStyles.getPropertyValue('--outer-shadow-blur').trim()};
 }
 
-/* Glass Container - Apply this class to your glass elements */
-.glass-container {
+/* Glass Effect - Apply this class to your glass elements */
+.glass-effect {
     position: relative;
     width: fit-content;
     min-width: 300px;
@@ -291,7 +291,7 @@ function exportCSS() {
     padding: 2rem;
 }
 
-.glass-container::before {
+.glass-effect::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -302,7 +302,7 @@ function exportCSS() {
     background-color: rgba(var(--tint-color), var(--tint-opacity));
 }
 
-.glass-container::after {
+.glass-effect::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -315,21 +315,21 @@ function exportCSS() {
     isolation: isolate;
 }
 
-/* Content inside glass container */
-.glass-container > * {
+/* Content inside glass effect */
+.glass-effect > * {
     position: relative;
     z-index: 1;
 }
 
-/* Optional: Draggable glass container */
-.glass-container.draggable {
+/* Optional: Draggable glass effect */
+.glass-effect.draggable {
     cursor: move;
     touch-action: none;
     -webkit-user-select: none;
     user-select: none;
 }
 
-.glass-container.draggable:active {
+.glass-effect.draggable:active {
     transform: scale(0.98);
 }
 
@@ -344,13 +344,7 @@ function exportCSS() {
     font-family: 'Arial', sans-serif;
     width: fit-content;
     pointer-events: none;
-}${backgroundUrl ? `
-
-/* Custom background */
-body {
-    background: url('${backgroundUrl}') center/cover no-repeat;
-}` : ''}
-`;
+}`;
 
     // Create displacement map HTML (keeping original for best visual effect)
     const displacementMapHTML = `<!-- Glass Effect Displacement Map -->
@@ -397,8 +391,8 @@ A modern, customizable glass morphism effect for web elements.
      </svg>
  
      <!-- Your glass element -->
-     <div class="glass-container">
-         <h1 class="glass-text">${textContent || 'Hello World'}</h1>
+     <div class="glass-effect">
+         <h2 class="glass-text">${textContent || 'Hello World'}</h2>
      </div>
      
      <!-- Optional: Safari compatibility (recommended for Safari users) -->
@@ -437,8 +431,8 @@ You can customize the glass effect by modifying these CSS variables in your \`:r
 ### Making it Draggable
 Add the \`draggable\` class to enable drag functionality:
 \`\`\`html
-<div class="glass-container draggable">
-    <h1 class="glass-text">Draggable Glass</h1>
+<div class="glass-effect draggable">
+    <h2 class="glass-text">Draggable Glass</h2>
 </div>
 \`\`\`
 
@@ -447,11 +441,11 @@ Note: Dragging functionality requires additional JavaScript (not included in thi
 ### Multiple Glass Elements
 You can have multiple glass elements on the same page. Each will use the same displacement map:
 \`\`\`html
-<div class="glass-container">
+<div class="glass-effect">
     <p>First glass element</p>
 </div>
 
-<div class="glass-container">
+<div class="glass-effect">
     <p>Second glass element</p>
 </div>
 \`\`\`
@@ -502,14 +496,12 @@ Generated with current settings:
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         
         if (isSafari) {
-            console.log('Safari detected - applying glass effect compatibility fixes');
-            
             // Force Safari to properly render SVG filters by triggering reflows
             const svgFilter = document.querySelector('#glass-distortion');
             if (svgFilter) {
                 // Initial fix - force Safari to acknowledge the filter
                 setTimeout(() => {
-                    const containers = document.querySelectorAll('.glass-container');
+                    const containers = document.querySelectorAll('.glass-effect');
                     containers.forEach(container => {
                         // Temporarily force a style recalculation
                         const originalFilter = container.style.filter;

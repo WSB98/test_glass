@@ -30,7 +30,7 @@
 
 body {
     margin: 0;
-    padding: 20px;
+    padding: 0;
     min-height: 100vh;
     background: linear-gradient(135deg, #7792bb 0%, #293d5e 100%);
     font-family: 'Arial', sans-serif;
@@ -38,17 +38,205 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header Section */
+.site-header {
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.header-subtitle {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Content wrapper for consistent padding */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Content sections */
+section {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 2rem auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    width: calc(100% - 2rem);
+}
+
+.intro-section .content-wrapper,
+.tutorial-section .content-wrapper,
+.technical-section .content-wrapper,
+.examples-section .content-wrapper,
+.best-practices-section .content-wrapper,
+.browser-support-section .content-wrapper {
+    padding: 2rem;
+}
+
+section h2 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+section h3 {
+    color: #34495e;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+section p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* Tutorial steps */
+.tutorial-steps {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.step {
+    padding: 1.5rem;
+    background: rgba(116, 75, 162, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid #764ba2;
+}
+
+.step ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.step li {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/* Technical grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-item {
+    padding: 1.5rem;
+    background: rgba(103, 126, 234, 0.1);
+    border-radius: 12px;
+    border-top: 4px solid #667eea;
+}
+
+.tech-item code {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Examples grid */
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.example-item {
+    padding: 1.5rem;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 12px;
+    border-bottom: 4px solid #3498db;
+}
+
+.code-snippet {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #2c3e50;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.code-snippet code {
+    color: #e74c3c;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Best practices */
+.practices-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.practice-item {
+    padding: 1.5rem;
+    background: rgba(46, 204, 113, 0.1);
+    border-radius: 12px;
+    border-right: 4px solid #2ecc71;
+}
+
+/* Browser support */
+.browser-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.browser-item {
+    padding: 1.5rem;
+    background: rgba(155, 89, 182, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    border-top: 4px solid #9b59b6;
+}
+
+.fallback-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(241, 196, 15, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid #f1c40f;
 }
 
 /* Desktop layout with side ads */
 .desktop-layout {
     display: flex;
     gap: 20px;
-    flex: 1;
+    flex: none;
     max-width: 1600px;
-    margin: 0 auto;
-    width: 100%;
+    margin: 2rem auto;
+    width: calc(100% - 2rem);
 }
 
 /* Left and right ad spaces */
@@ -125,7 +313,7 @@ body {
     transform: translate(-50%, -50%) scale(0.98);
 }
 
-h1 {
+.container .glass-text {
     margin: 0 auto;
     text-align: center;
     font-size: var(--initial-font-size);
@@ -139,8 +327,8 @@ h1 {
     z-index: 1;
 }
 
+/* Ad spaces - Side ads and banner ads */
 .ad-space {
-    min-height: 100px;
     background: transparent;
     border: none;
     border-radius: 8px;
@@ -150,10 +338,10 @@ h1 {
     position: relative;
 }
 
-/* Remove placeholder styling when ads are present */
 .ad-space .adsbygoogle {
     width: 100%;
     height: 100%;
+    border: 2px dashed white;
 }
 
 /* Fallback styling for empty ad spaces during development */
@@ -169,24 +357,14 @@ h1 {
     font-size: 14px;
 }
 
-/* Top banner ad space */
-.ad-space-top {
-    margin: 0 auto 20px auto;
-    width: calc(100% - 40px);
-    max-width: 1600px;
-    min-height: 90px;
-    flex-shrink: 0;
-}
-
-.ad-space-below {
-    width: 100%;
-}
-
-.ad-space-bottom {
-    margin: 0 auto;
-    width: calc(100% - 40px);
-    max-width: 1600px;
-    margin-bottom: 20px;
+/* Banner ads between content sections */
+.ad-banner-1,
+.ad-banner-2,
+.ad-banner-3 {
+    min-height: 120px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    width: calc(100% - 2rem);
 }
 
 .controls-bar {
@@ -206,73 +384,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 16px;
-    margin: 0 auto;
-    width: calc(100% - 40px);
-    max-width: 1600px;
     flex-shrink: 0;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 1024px) {
-    .desktop-layout {
-        flex-direction: column;
-    }
-    
-    /* Keep one ad above main container - use left ad */
-    .ad-space-left {
-        width: 100%;
-        min-height: 100px;
-        order: -1; /* Above main container */
-    }
-    
-    .content-area {
-        order: 0;
-    }
-    
-    /* Hide the right ad completely in mobile within desktop-layout */
-    .desktop-layout .ad-space-right {
-        display: none !important;
-    }
-    
-    /* The ad-space-below stays between main and controls (it's inside content-area) */
-    .ad-space-below {
-        display: block;
-        width: 100%;
-    }
-    
-    /* Move top banner, right, and bottom ads below controls */
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .desktop-layout {
-        order: 1;
-    }
-    
-    .controls-bar {
-        order: 2;
-    }
-    
-    /* 3 ads below controls */
-    .ad-space-top {
-        order: 3;
-        margin: 20px auto 0 auto; /* Adjust top margin for mobile positioning */
-    }
-    
-    .ad-space-right {
-        display: block; /* Show again but positioned after controls */
-        width: calc(100% - 40px);
-        max-width: 1600px;
-        margin: 20px auto 0 auto;
-        min-height: 100px;
-        order: 4;
-    }
-    
-    .ad-space-bottom {
-        order: 5;
-        margin-top: 0;
-    }
 }
 
 .control-group {
@@ -365,4 +477,121 @@ h1 {
     font-size: 9px;
     opacity: 0.6;
     margin-top: 2px;
+}
+
+/* Footer */
+.site-footer {
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.site-footer p {
+    margin: 0.5rem 0;
+    opacity: 0.8;
+    color: white;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+    .desktop-layout {
+        flex-direction: column;
+    }
+    
+    /* Keep one ad above main container - use left ad */
+    .ad-space-left {
+        width: 100%;
+        min-height: 100px;
+        order: -1; /* Above main container */
+    }
+    
+    .content-area {
+        order: 0;
+    }
+    
+    /* Hide the right ad completely in mobile within desktop-layout */
+    .desktop-layout .ad-space-right {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+    }
+    
+    .content-wrapper {
+        padding: 0 1rem;
+    }
+    
+    section .content-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .main-container {
+        height: 50vh;
+    }
+    
+    .controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .control-group {
+        min-width: auto;
+        align-items: stretch;
+    }
+    
+    .control-group label {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    
+    .export-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .tech-grid,
+    .examples-grid,
+    .practices-content,
+    .browser-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .desktop-layout {
+        margin: 1rem auto;
+    }
+    
+    .ad-space-left {
+        min-height: 100px;
+    }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .examples-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .practices-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
