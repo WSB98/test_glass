@@ -5,7 +5,7 @@
     <!-- Main Page -->
     <url>
         <loc>https://glasscss.com/</loc>
-        <lastmod>2024-12-19</lastmod>
+        <lastmod>2025-07-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -18,7 +18,7 @@
     <!-- Favicon Directory -->
     <url>
         <loc>https://glasscss.com/favicon/</loc>
-        <lastmod>2024-12-19</lastmod>
+        <lastmod>2025-07-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -26,7 +26,7 @@
     <!-- App Manifest -->
     <url>
         <loc>https://glasscss.com/favicon/site.webmanifest</loc>
-        <lastmod>2024-12-19</lastmod>
+        <lastmod>2025-07-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.2</priority>
     </url>

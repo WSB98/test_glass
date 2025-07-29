@@ -180,7 +180,7 @@ document.getElementById('backgroundUrl').addEventListener('input', function() {
 
 // Text content control
 document.getElementById('textContent').addEventListener('input', function() {
-    document.querySelector('.glass-text').textContent = this.value || 'Hello World';
+    document.querySelector('.glass-text').textContent = this.value || 'Your Text Here';
 });
 
 // Font size control
@@ -392,7 +392,7 @@ A modern, customizable glass morphism effect for web elements.
  
      <!-- Your glass element -->
      <div class="glass-effect">
-         <h2 class="glass-text">${textContent || 'Hello World'}</h2>
+         <h2 class="glass-text">${textContent || 'Your Text Here'}</h2>
      </div>
      
      <!-- Optional: Safari compatibility (recommended for Safari users) -->
@@ -477,7 +477,7 @@ You can have multiple glass elements on the same page. Each will use the same di
 Generated with current settings:
 - Font Size: ${fontSize}px
 - Font Color: ${fontColor}
-- Text Content: "${textContent || 'Hello World'}"
+- Text Content: "${textContent || 'Your Text Here'}"
 - Background: ${backgroundUrl || 'Default'}
 - Noise Frequency: ${noiseFreq}
 - Distortion: ${distortion}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Liquid Glass Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for 404 page to keep it minimal */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7792bb 0%, #293d5e 100%);
+            color: #333;
+        }
+        .error-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .error-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 4rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .error-content h1 {
+            font-size: 5rem;
+            margin: 0;
+            color: #2c3e50;
+        }
+        .error-content h2 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #34495e;
+        }
+        .error-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .home-button:hover {
+            transform: scale(1.05);
+        }
+        /* Make sure no ads are displayed */
+        .ad-space {
+            display: none !important;
+        }
+    </style>
+    <!-- Favicon and App Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Liquid Glass Generator</h1>
+        </div>
+    </header>
+
+    <!-- Error Content Section -->
+    <section class="error-section">
+        <div class="error-content">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>Sorry, the page you are looking for doesn't exist. Let's get you back to safety.</p>
+            <a href="/" class="home-button">Go to Homepage</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="content-wrapper">
+            <p>Liquid Glass Generator. Create beautiful glass morphism effects for modern web design.</p>
+        </div>
+    </footer>
+</body>
+</html> 

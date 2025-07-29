@@ -20,7 +20,7 @@
     --outer-shadow-blur: 24px;
 
     /* Initial UI Values - Edit these to change defaults */
-    --initial-text-content: "Hello World";
+    --initial-text-content: "Your Text Here";
     --initial-font-size: 32px;
     --initial-font-color: #333333;
     --initial-background-url: "image.jpg";
@@ -593,5 +593,10 @@ section p {
     
     .practices-content {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Hide right ad on tablets for better focus */
+    .desktop-layout .ad-space-right {
+        display: none !important;
     }
 }
