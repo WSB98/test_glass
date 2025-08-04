@@ -246,6 +246,176 @@ function forceSafariFilterRefresh() {
     }
 }
 
+// Copy Example Settings Function
+function copyExampleSettings(exampleType) {
+    // Define settings for each example type
+    const exampleSettings = {
+        subtle: {
+            shadowBlur: 15,
+            shadowSpread: -8,
+            tintOpacity: 0.2,
+            frostBlur: 6,
+            noiseFreq: 0.004,
+            distortion: 25,
+            outerShadow: 15,
+            tintColor: '#ffffff',
+            shadowColor: '#ffffff',
+            textContent: 'Welcome',
+            fontSize: 28,
+            fontColor: '#ffffff'
+        },
+        frost: {
+            shadowBlur: 40,
+            shadowSpread: -5,
+            tintOpacity: 0.35,
+            frostBlur: 16,
+            noiseFreq: 0.012,
+            distortion: 60,
+            outerShadow: 30,
+            tintColor: '#ffffff',
+            shadowColor: '#ffffff',
+            textContent: 'Features',
+            fontSize: 32,
+            fontColor: '#ffffff'
+        },
+        tinted: {
+            shadowBlur: 30,
+            shadowSpread: -6,
+            tintOpacity: 0.25,
+            frostBlur: 10,
+            noiseFreq: 0.006,
+            distortion: 45,
+            outerShadow: 25,
+            tintColor: '#677eea',
+            shadowColor: '#677eea',
+            textContent: 'Portfolio',
+            fontSize: 30,
+            fontColor: '#ffffff'
+        },
+        bubble: {
+            shadowBlur: 50,
+            shadowSpread: -10,
+            tintOpacity: 0.15,
+            frostBlur: 12,
+            noiseFreq: 0.015,
+            distortion: 95,
+            outerShadow: 40,
+            tintColor: '#ffffff',
+            shadowColor: '#ffffff',
+            textContent: 'Contact',
+            fontSize: 26,
+            fontColor: '#ffffff'
+        },
+        ultra: {
+            shadowBlur: 35,
+            shadowSpread: -8,
+            tintOpacity: 0.2,
+            frostBlur: 8,
+            noiseFreq: 0.018,
+            distortion: 120,
+            outerShadow: 35,
+            tintColor: '#cfb9da',
+            shadowColor: '#cfb9da',
+            textContent: 'Navigation',
+            fontSize: 24,
+            fontColor: '#ffffff'
+        }
+    };
+
+    const settings = exampleSettings[exampleType];
+    if (!settings) return;
+
+    // Find the clicked button and add visual feedback
+    const clickedButton = event.target.closest('.copy-settings-btn');
+    if (clickedButton) {
+        clickedButton.classList.add('copied');
+        setTimeout(() => {
+            clickedButton.classList.remove('copied');
+        }, 2000);
+    }
+
+    // Apply settings to controls and update display values
+    document.getElementById('shadowBlur').value = settings.shadowBlur;
+    document.getElementById('shadowBlurValue').textContent = settings.shadowBlur + 'px';
+    updateCSSVariable('--shadow-blur', settings.shadowBlur, 'px');
+
+    document.getElementById('shadowSpread').value = settings.shadowSpread;
+    document.getElementById('shadowSpreadValue').textContent = settings.shadowSpread + 'px';
+    updateCSSVariable('--shadow-spread', settings.shadowSpread, 'px');
+
+    document.getElementById('tintOpacity').value = settings.tintOpacity;
+    document.getElementById('tintOpacityValue').textContent = settings.tintOpacity;
+    updateCSSVariable('--tint-opacity', settings.tintOpacity);
+
+    document.getElementById('frostBlur').value = settings.frostBlur;
+    document.getElementById('frostBlurValue').textContent = settings.frostBlur + 'px';
+    updateCSSVariable('--frost-blur', settings.frostBlur, 'px');
+
+    document.getElementById('noiseFreq').value = settings.noiseFreq;
+    document.getElementById('noiseFreqValue').textContent = settings.noiseFreq;
+    updateCSSVariable('--noise-frequency', settings.noiseFreq);
+    document.querySelector('#glass-distortion feTurbulence').setAttribute('baseFrequency', settings.noiseFreq);
+
+    document.getElementById('distortion').value = settings.distortion;
+    document.getElementById('distortionValue').textContent = settings.distortion;
+    updateCSSVariable('--distortion-strength', settings.distortion);
+    document.querySelector('#glass-distortion feDisplacementMap').setAttribute('scale', settings.distortion);
+
+    document.getElementById('outerShadow').value = settings.outerShadow;
+    document.getElementById('outerShadowValue').textContent = settings.outerShadow + 'px';
+    updateCSSVariable('--outer-shadow-blur', settings.outerShadow, 'px');
+
+    // Set color inputs
+    document.getElementById('tintColor').value = settings.tintColor;
+    const tintRgb = hexToRgb(settings.tintColor);
+    updateCSSVariable('--tint-color', tintRgb);
+
+    document.getElementById('shadowColor').value = settings.shadowColor;
+    const shadowRgb = hexToRgb(settings.shadowColor);
+    updateCSSVariable('--shadow-color', `rgba(${shadowRgb}, 0.7)`);
+
+    // Set text content and styling
+    document.getElementById('textContent').value = settings.textContent;
+    document.querySelector('.glass-text').textContent = settings.textContent;
+
+    document.getElementById('fontSize').value = settings.fontSize;
+    document.getElementById('fontSizeValue').textContent = settings.fontSize + 'px';
+    document.querySelector('.glass-text').style.fontSize = settings.fontSize + 'px';
+
+    document.getElementById('fontColor').value = settings.fontColor;
+    document.querySelector('.glass-text').style.color = settings.fontColor;
+
+    // Force Safari filter refresh if needed
+    forceSafariFilterRefresh();
+
+    // Smooth scroll to top of page
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    // Show a brief notification
+    showCopyNotification(exampleType);
+}
+
+// Show copy notification
+function showCopyNotification(exampleType) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'copy-notification';
+    notification.textContent = `${exampleType.charAt(0).toUpperCase() + exampleType.slice(1)} settings copied!`;
+    
+    // Add to document
+    document.body.appendChild(notification);
+    
+    // Remove after animation
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 3000);
+}
+
 // Export CSS function
 function exportCSS() {
     const zip = new JSZip();

@@ -600,3 +600,405 @@ section p {
         display: none !important;
     }
 }
+
+/* Glass Examples Section */
+.glass-examples-section {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 2rem auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    width: calc(100% - 2rem);
+}
+
+.glass-examples-section .content-wrapper {
+    padding: 2rem;
+}
+
+.examples-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.example-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.example-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Copy Settings Button */
+.copy-settings-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(103, 126, 234, 0.9);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(103, 126, 234, 0.3);
+    z-index: 10;
+}
+
+.copy-settings-btn:hover {
+    background: rgba(103, 126, 234, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(103, 126, 234, 0.4);
+}
+
+.copy-settings-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-settings-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+/* Copy button success state */
+.copy-settings-btn.copied {
+    background: rgba(46, 204, 113, 0.9);
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+}
+
+.copy-settings-btn.copied:hover {
+    background: rgba(46, 204, 113, 1);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+}
+
+/* Copy Notification */
+.copy-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(46, 204, 113, 0.95);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    z-index: 10000;
+    animation: slideInNotification 0.3s ease-out, fadeOutNotification 0.3s ease-in 2.7s forwards;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes slideInNotification {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutNotification {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.example-container h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.background-demo {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    background: url('image.jpg') center/cover no-repeat;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Base glass example structure - same as main container */
+.glass-example {
+    position: relative;
+    padding: 1.5rem;
+    width: calc(90% - 3rem);
+    border-radius: 20px;
+    text-align: center;
+    isolation: isolate;
+    cursor: default;
+}
+
+.glass-example h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.glass-example p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Example 1: Subtle Liquid Glass - Low distortion, soft blur */
+.glass-card {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 20px;
+    box-shadow: inset 0 0 25px -8px rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    -webkit-filter: url(#glass-subtle);
+    filter: url(#glass-subtle);
+    isolation: isolate;
+}
+
+/* Example 2: Heavy Frost Liquid Glass - High blur, medium distortion */
+.glass-frosted {
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.glass-frosted::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 20px;
+    box-shadow: inset 0 0 40px -5px rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.glass-frosted::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    -webkit-filter: url(#glass-frost);
+    filter: url(#glass-frost);
+    isolation: isolate;
+}
+
+/* Example 3: Tinted Liquid Glass - Colored with medium settings */
+.glass-tinted {
+    box-shadow: 0px 6px 25px rgba(103, 126, 234, 0.3);
+}
+
+.glass-tinted::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 20px;
+    box-shadow: inset 0 0 30px -6px rgba(103, 126, 234, 0.7);
+    background-color: rgba(103, 126, 234, 0.25);
+}
+
+.glass-tinted::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-filter: url(#glass-tinted);
+    filter: url(#glass-tinted);
+    isolation: isolate;
+}
+
+/* Example 4: Intense Liquid Bubble - High distortion, bubble shape */
+.glass-bubble {
+    border-radius: 50px;
+    box-shadow: 
+        0px 12px 40px rgba(0, 0, 0, 0.25),
+        0px 0px 0px 2px rgba(255, 255, 255, 0.1);
+}
+
+.glass-bubble::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 50px;
+    box-shadow: 
+        inset 0 0 50px -10px rgba(255, 255, 255, 0.8),
+        inset 0 0 20px 0px rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.glass-bubble::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 50px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    -webkit-filter: url(#glass-bubble);
+    filter: url(#glass-bubble);
+    isolation: isolate;
+}
+
+/* Example 5: Ultra Liquid Bar - Maximum distortion, gradient tint */
+.glass-gradient {
+    border-radius: 30px;
+    height: -webkit-fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* Center the bar */
+}
+
+.glass-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 30px;
+    box-shadow: 
+        inset 0 0 35px -8px rgba(255, 255, 255, 0.9),
+        inset 0 -10px 20px -10px rgba(138, 43, 226, 0.3),
+        inset 0 10px 20px -10px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(138, 43, 226, 0.2) 50%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+}
+
+.glass-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    -webkit-filter: url(#glass-ultra);
+    filter: url(#glass-ultra);
+    isolation: isolate;
+}
+
+/* Responsive adjustments for examples */
+@media (max-width: 768px) {
+    .examples-showcase {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .background-demo {
+        height: 180px;
+    }
+    
+    .glass-example {
+        padding: 1rem;
+    }
+    
+    .glass-gradient {
+        width: 200px !important; /* Override inherited width on mobile */
+        height: 50px;
+        margin: 0 auto; /* Keep centered on mobile */
+    }
+    
+    /* Mobile responsive for copy buttons */
+    .copy-settings-btn {
+        width: 35px;
+        height: 35px;
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    
+    .copy-settings-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Mobile notification */
+    .copy-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        text-align: center;
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+    
+    @keyframes slideInNotification {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeOutNotification {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+    }
+}

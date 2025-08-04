@@ -9,7 +9,7 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://glasscss.com/image.jpg</image:loc>
+            <image:loc>https://glasscss.com/siteimage.png</image:loc>
             <image:title>Liquid Glass Generator - Glass Morphism Effect Tool</image:title>
             <image:caption>Professional CSS glass morphism generator with real-time preview and customizable effects</image:caption>
         </image:image>

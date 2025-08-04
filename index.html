@@ -17,7 +17,7 @@
     <!-- Enhanced SEO Meta Tags -->
     <meta name="description" content="Create beautiful liquid glass morphism effects with our advanced CSS generator. Customize glass blur, transparency, shadows, and distortion. Download production-ready CSS code for modern glassmorphism designs. Free online tool for web designers and developers.">
     <meta name="keywords" content="glass morphism, glassmorphism, liquid glass effect, CSS glass generator, frosted glass CSS, backdrop filter, glass UI, modern CSS effects, transparent glass design, web design tool, CSS code generator, glass card design, neumorphism, UI design trends, web development tools, glass background effect, blur effect generator, transparent UI elements, modern web design, CSS3 effects, glass button design, frosted glass navbar, glass modal design, responsive glass effects">
-    <meta name="author" content="Liquid Glass Generator">
+    <meta name="author" content="BKR Studio">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#667eea">
@@ -28,7 +28,7 @@
     <meta property="og:description" content="Professional CSS glass morphism generator. Create beautiful frosted glass effects with customizable blur, transparency, and distortion. Export production-ready code instantly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://glasscss.com">
-    <meta property="og:image" content="https://glasscss.com/image.png">
+    <meta property="og:image" content="https://glasscss.com/siteimage.png">
     <meta property="og:image:alt" content="Liquid Glass Generator - Glass Morphism Effect Tool Preview">
     <meta property="og:site_name" content="Liquid Glass Generator">
     <meta property="og:locale" content="en_US">
@@ -37,7 +37,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Liquid Glass Generator - CSS Glass Morphism Tool">
     <meta name="twitter:description" content="Create stunning glass morphism effects with our professional CSS generator. Customize glass blur, shadows, transparency, and export production-ready code instantly.">
-    <meta name="twitter:image" content="https://glasscss.com/image.png">
+    <meta name="twitter:image" content="https://glasscss.com/siteimage.png">
     <meta name="twitter:image:alt" content="Liquid Glass Generator Tool Interface">
     
     <!-- Canonical URL -->
@@ -60,7 +60,7 @@
         "alternateName": "Glass Morphism CSS Generator",
         "description": "Professional online tool for creating stunning liquid glass morphism effects. Generate production-ready CSS code with customizable glass blur, transparency, shadows, and distortion effects. Perfect for modern web design and UI development.",
         "url": "https://glasscss.com",
-        "image": "https://glasscss.com/image.jpg",
+        "image": "https://glasscss.com/siteimage.png",
         "applicationCategory": "WebApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires modern browser with CSS backdrop-filter support",
@@ -124,9 +124,40 @@
 <body>
     <svg style="position: absolute; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg">
         <defs>
+            <!-- Main tool distortion -->
             <filter id="glass-distortion">
                 <feTurbulence baseFrequency="0.008" numOctaves="2" result="turbulence"/>
                 <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="77"/>
+            </filter>
+            
+            <!-- Example 1: Subtle liquid glass - gentle distortion -->
+            <filter id="glass-subtle">
+                <feTurbulence baseFrequency="0.004" numOctaves="1" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="25"/>
+            </filter>
+            
+            <!-- Example 2: Heavy frost liquid - medium organic distortion -->
+            <filter id="glass-frost">
+                <feTurbulence baseFrequency="0.012" numOctaves="3" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="60"/>
+            </filter>
+            
+            <!-- Example 3: Tinted liquid - flowing distortion -->
+            <filter id="glass-tinted">
+                <feTurbulence baseFrequency="0.006" numOctaves="2" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="45"/>
+            </filter>
+            
+            <!-- Example 4: Intense bubble - high organic distortion -->
+            <filter id="glass-bubble">
+                <feTurbulence baseFrequency="0.015" numOctaves="4" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="95"/>
+            </filter>
+            
+            <!-- Example 5: Ultra liquid bar - maximum fluid distortion -->
+            <filter id="glass-ultra">
+                <feTurbulence baseFrequency="0.018" numOctaves="3" result="turbulence"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="120"/>
             </filter>
         </defs>
     </svg>
@@ -138,15 +169,7 @@
             <p class="header-subtitle">Create stunning glass morphism effects with professional CSS code generation</p>
         </div>
     </header>
-   <!-- First Banner Ad - After Main Tool -->
-   <div class="ad-space ad-banner-1">
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-6347972133297091"
-        data-ad-slot="1951581110"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-</div>
+
    
 
     <!-- Desktop layout with side ads around main tool -->
@@ -260,6 +283,8 @@
         </div>
     </div>
 
+
+
  
 
      <!-- Introduction Section -->
@@ -271,6 +296,111 @@
             <p>Our Liquid Glass Generator takes this concept further by adding dynamic distortion effects that create a more organic, liquid-like appearance. The result is a unique visual effect that stands out from traditional flat or even standard glass morphism designs.</p>
         </div>
     </section>
+
+    <!-- Examples Section -->
+    <section class="glass-examples-section">
+        <div class="content-wrapper">
+            <h2>Liquid Glass Examples</h2>
+            <p>Explore these 5 distinct liquid glass variations, each demonstrating different combinations of distortion, blur, and tinting effects. All examples use the same background image and SVG distortion filter as the main tool for true liquid glass morphism.</p>
+            
+            <div class="examples-showcase">
+                <!-- Example 1: Subtle Liquid Glass -->
+                <div class="example-container">
+                    <button class="copy-settings-btn" onclick="copyExampleSettings('subtle')" title="Copy settings to main tool">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <h3>Subtle Liquid Glass</h3>
+                    <div class="background-demo">
+                        <div class="glass-example glass-card">
+                            <h4>Welcome</h4>
+                            <p>Low distortion with soft blur - elegant and readable liquid glass effect.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 2: Heavy Frost Liquid -->
+                <div class="example-container">
+                    <button class="copy-settings-btn" onclick="copyExampleSettings('frost')" title="Copy settings to main tool">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <h3>Heavy Frost Liquid</h3>
+                    <div class="background-demo">
+                        <div class="glass-example glass-frosted">
+                            <h4>Features</h4>
+                            <p>High backdrop blur with liquid distortion - maximum privacy with organic flow.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 3: Tinted Liquid Glass -->
+                <div class="example-container">
+                    <button class="copy-settings-btn" onclick="copyExampleSettings('tinted')" title="Copy settings to main tool">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <h3>Tinted Liquid Glass</h3>
+                    <div class="background-demo">
+                        <div class="glass-example glass-tinted">
+                            <h4>Portfolio</h4>
+                            <p>Brand-colored liquid glass with balanced distortion and medium blur.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 4: Intense Liquid Bubble -->
+                <div class="example-container">
+                    <button class="copy-settings-btn" onclick="copyExampleSettings('bubble')" title="Copy settings to main tool">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <h3>Intense Liquid Bubble</h3>
+                    <div class="background-demo">
+                        <div class="glass-example glass-bubble">
+                            <h4>Contact</h4>
+                            <p>Bubble shape with high liquid distortion - maximum organic fluid effect.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example 5: Ultra Liquid Bar -->
+                <div class="example-container">
+                    <button class="copy-settings-btn" onclick="copyExampleSettings('ultra')" title="Copy settings to main tool">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <h3>Ultra Liquid Bar</h3>
+                    <div class="background-demo">
+                        <div class="glass-example glass-gradient">
+                            <h4>Navigation</h4>
+                            <p>Gradient liquid glass bar with multi-layered distortion and color flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+           <!-- First Banner Ad - After Main Tool -->
+   <div class="ad-space ad-banner-1">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6347972133297091"
+        data-ad-slot="1951581110"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+</div>
 
     <!-- Tutorial Section -->
     <section class="tutorial-section">
@@ -486,7 +616,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.0.1"></script>
     
     <!-- Initialize AdSense ads -->
     <script>
